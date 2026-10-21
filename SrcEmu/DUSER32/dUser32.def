@@ -333,4 +333,8 @@ EXPORTS
  wsprintfW
  wvsprintfA
  wvsprintfW
-
+ FlashWindowEx
+ MapVirtualKeyW
+ RegisterClipboardFormatW
+ ToUnicodeEx
+ VkKeyScanW

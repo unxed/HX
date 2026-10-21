@@ -42,6 +42,7 @@
 .\WinStat.ASM \
 .\wndclass.ASM \
 .\wndclasW.ASM \
+.\W2KUSER.ASM \
 .\wsprintf.ASM \
 .\wsprntfw.ASM \
 .\wvsprntf.ASM \
