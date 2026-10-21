@@ -23,6 +23,10 @@ endif
 ;--- saved/restored on proc entry/exit
 
 ConvertWStr proc public
+	;--- "\\?\X:..." (long path prefix of Win32) is "X:..." for DOS
+	.if (eax && dword ptr [eax] == 005C005Ch && dword ptr [eax+4] == 005C003Fh && word ptr [eax+8] && word ptr [eax+10] == ':')
+		add eax, 8
+	.endif
 	push eax
 	invoke lstrlenW, eax
 	inc eax
