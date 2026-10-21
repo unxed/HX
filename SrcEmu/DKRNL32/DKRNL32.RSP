@@ -593,4 +593,29 @@ EXPORT {
  lstrlen
  lstrlenA
  lstrlenW
+ GetProcessHeaps
+ GlobalMemoryStatusEx
+ GetLogicalDriveStringsW
+ FindFirstChangeNotificationW
+ GetCPInfoExW
+ CopyFileExW
+ CreateHardLinkW
+ CreateNamedPipeW
+ DefineDosDeviceW
+ EnumSystemCodePagesW
+ FindFirstVolumeW
+ FindNextVolumeW
+ FindVolumeClose
+ GetCalendarInfoW
+ GetCompressedFileSizeW
+ GetComputerNameExW
+ GetConsoleAliasW
+ GetConsoleDisplayMode
+ GetConsoleWindow
+ GetVolumeNameForVolumeMountPointW
+ HeapQueryInformation
+ QueryDosDeviceW
+ SetThreadExecutionState
+ SetVolumeMountPointW
+ WaitNamedPipeW
 }
