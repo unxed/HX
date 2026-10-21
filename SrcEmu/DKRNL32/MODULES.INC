@@ -170,6 +170,7 @@
 .\mutex.ASM \
 .\mutexw.ASM \
 .\NMPIPES.ASM \
+.\NTDIR.ASM \
 .\NTPROCS.ASM \
 .\OPENFILE.ASM \
 .\OUTDBGST.ASM \

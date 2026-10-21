@@ -13,6 +13,8 @@ endif
 
 	include winbase.inc
 	include macros.inc
+
+_OpenDirHandle proto stdcall :ptr BYTE
 	include dkrnl32.inc
 
 ;;_DEBUG	equ 1
@@ -343,6 +345,13 @@ noconcom:
 		add edi, sizeof VXDENTRY
 	.endw
 nospecial:
+;--- a directory with FILE_FLAG_BACKUP_SEMANTICS: directory object (NTDIR.ASM)
+	test attributes, FILE_FLAG_BACKUP_SEMANTICS
+	jz @F
+	invoke _OpenDirHandle, esi
+	cmp eax, -1
+	jnz exit
+@@:
 	mov eax,sharemode
 	mov ecx,access
 	call translate_sharemode    ;set BX

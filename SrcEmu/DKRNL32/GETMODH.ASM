@@ -38,6 +38,20 @@ if ?FLAT
 ;	jz exit
 	mov ax,4B82h
 	int 21h
+;--- "ntdll" is DKRNL32, as the loader maps it for imports
+	.if (!eax)
+		invoke lstrcmpiA, pName, CStr("ntdll")
+		.if (eax)
+			invoke lstrcmpiA, pName, CStr("ntdll.dll")
+		.endif
+		.if (!eax)
+			mov edx, CStr("KERNEL32")
+			mov ax,4B82h
+			int 21h
+		.else
+			xor eax, eax
+		.endif
+	.endif
 else
 	mov eax, pName
 	push 0

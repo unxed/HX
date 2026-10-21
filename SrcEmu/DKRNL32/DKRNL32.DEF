@@ -617,3 +617,7 @@ EXPORTS
  SetThreadExecutionState
  SetVolumeMountPointW
  WaitNamedPipeW
+ NtClose
+ NtQueryDirectoryFile
+ RtlGetLastNtStatus
+ RtlNtStatusToDosError
