@@ -725,6 +725,21 @@ endif
 			and eax, eax
 			jnz skipitem
 			invoke CloseHandle, edi
+		.elseif ((cl & TF_TERMINATED) && [edi].THREAD.hStack)
+;--- a terminated thread does not need its stack any more, even if its
+;--- handle is still open (as on Windows). Without this, a program that
+;--- starts short threads and never closes their handles (Far Manager 2:
+;--- WindowHandler::Check) runs out of memory.
+			invoke IsKernelHeapLocked
+			and eax, eax
+			jnz skipitem
+			xor ecx, ecx
+			xchg ecx, [edi].THREAD.hStack
+if ?USEHEAP
+			invoke LocalFree, ecx
+else
+			invoke VirtualFree, ecx, 0, MEM_RELEASE
+endif
 		.endif
 		and byte ptr [edi].THREAD.flags, not TF_LINKED
 		mov [edi].THREAD.pNext, edi
